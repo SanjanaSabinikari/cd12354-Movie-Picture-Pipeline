@@ -1,7 +1,8 @@
-cdname: Frontend Continuous Integration
+name: Frontend Continuous Integration
 
 on:
   workflow_dispatch:
+
   pull_request:
     branches:
       - main
@@ -16,9 +17,11 @@ env:
   NODE_VERSION: '18'
 
 jobs:
+
   lint:
     name: Lint
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -42,9 +45,11 @@ jobs:
       - name: Run lint
         run: npm run lint
 
+
   test:
     name: Test
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -70,7 +75,8 @@ jobs:
         env:
           CI: true
 
-    build:
+
+  build:
     name: Build
     runs-on: ubuntu-latest
     needs: [lint, test]
